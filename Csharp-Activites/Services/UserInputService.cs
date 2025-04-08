@@ -1,6 +1,8 @@
 ﻿using Csharp_Activites.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Xml.Linq;
 
@@ -9,8 +11,11 @@ namespace Csharp_Activites.Services
     class UserInputService
     {
         Student student = new Student();
-        void InputStudentInfo()
+        GradingService gradingService = new GradingService();
+        public void InputStudentInfo()
         {
+           // Console.Write("Please Enter type of  Student: [1-College] [2-Highschool] ");
+           // student.studentType = Console.ReadLine();
             Console.Write("Please Enter Your Name: ");
             student.studentName = Console.ReadLine();
             Console.Write("Please how many subjects you currently take: ");
@@ -29,9 +34,12 @@ namespace Csharp_Activites.Services
                 student.subjectGrade = Convert.ToSingle(Console.ReadLine());
                 student.gradeList.Add(student.subjectGrade);
             }
-            sum = gradeList.Sum();
-            totalPercentageSubjects = (subjectCount / 100.0f);
-            finalAverage = sum / (totalPercentageSubjects * 100.0f);
+
+           float finalGrade = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);      
+            
         }
+
+        
+
     }
 }

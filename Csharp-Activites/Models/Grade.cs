@@ -6,8 +6,8 @@ namespace Csharp_Activites.Models
 {
     class Grade
     {
-        float sum { get; set; }
-        float totalPercentageSubjects { get; set; }
-        float finalAverage { get; set; }
+        public float sum { get; set; }
+        public float totalPercentageSubjects { get; set; }
+        public float finalAverage { get; set; }
     }
 }
