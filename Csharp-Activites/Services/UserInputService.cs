@@ -59,7 +59,10 @@ namespace Csharp_Activites.Services
                 student.finalAverage = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);
                 student.grading = gradingService.GradingAverage(student.finalAverage);
 
-                FinalStudent studentDisplay = new FinalStudent(student.studentName, student.subjectCount, student.studentLevel, student.subjectList, student.gradeList, student.finalAverage, student.grading);
+                FinalStudent studentDisplay = new FinalStudent(student.studentName, student.subjectCount, 
+                                                               student.studentLevel, student.subjectList, 
+                                                               student.gradeList, student.finalAverage, 
+                                                               student.grading);
             }
             catch (Exception)
             {
