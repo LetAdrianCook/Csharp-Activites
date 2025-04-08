@@ -34,8 +34,12 @@ namespace Csharp_Activites.Services
                     highschoolStudent.ShowStudentLevel();
                     student.studentLevel = "Highschool Level";
                 }
-                else Console.WriteLine("Invalid input");
-
+                else
+                {
+                    Console.WriteLine("Invalid Grade level input selection");
+                    return;
+                }
+                   
                 Console.WriteLine();
                 Console.Write("Please Enter Your Name: ");
                 student.studentName = Console.ReadLine();
