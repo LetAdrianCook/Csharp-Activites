@@ -47,6 +47,7 @@ namespace Csharp_Activites.Models
             Console.WriteLine();
             Console.WriteLine("Your Final Average is : " + average);
             Console.WriteLine("Grading               : " + grading);
+            Console.WriteLine();
             Console.WriteLine("------------------------------------------------------");
             Console.WriteLine();
         }
