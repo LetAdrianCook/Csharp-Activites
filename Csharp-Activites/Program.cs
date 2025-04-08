@@ -9,13 +9,48 @@ namespace Csharp_Activites
     {
         static void Main(string[] args)
         {
-            bool run = false;
-            Student student = new Student();
-            Grade grade = new Grade();
+            int choice;
+            bool run = true;
             UserInputService inputService = new UserInputService();
 
-            inputService.InputStudentInfo();
+            while (run == true)
+            {
+                try
+                {
+                    Console.WriteLine("----------------------------Automatic Grading System----------------------------");
+                    Console.WriteLine("            [1] - Calculate Grade | [2] - Clear Console | [3] - Exit");
+                    Console.Write("Enter choice: ");
+                    choice = Convert.ToInt32(Console.ReadLine());
+                    switch (choice)
+                    {
+                        case 1:
+                            inputService.InputStudentInfo();
+                            break;
+                        case 2:
+                            Console.WriteLine("Cleared the console.");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;  
+                        case 3:
+                            Console.WriteLine("Exiting...");
+                            run = false;
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice please enter only 1, 2 and 3");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+                    }
+
+                }
+                catch { 
+                    Console.WriteLine("Invalid Input");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+            }
 
         }
     }
 }
+

@@ -11,7 +11,7 @@ namespace Csharp_Activites.Services
         public float CalculateFinalGrade(List<float> gradeList, int subjectCount)
         {
             float sum = gradeList.Sum();
-            return sum / subjectCount * 100.00f;
+            return sum / subjectCount;
         }
 
         public string DisplayResult(string studentName, string studentType )

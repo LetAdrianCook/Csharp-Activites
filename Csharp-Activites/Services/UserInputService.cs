@@ -10,33 +10,52 @@ namespace Csharp_Activites.Services
 {
     class UserInputService
     {
-        Student student = new Student();
-        GradingService gradingService = new GradingService();
         public void InputStudentInfo()
         {
-           // Console.Write("Please Enter type of  Student: [1-College] [2-Highschool] ");
-           // student.studentType = Console.ReadLine();
-            Console.Write("Please Enter Your Name: ");
-            student.studentName = Console.ReadLine();
-            Console.Write("Please how many subjects you currently take: ");
-            student.subjectCount = Convert.ToInt32(Console.ReadLine());
+            Student student = new Student();
+            Student highschoolStudent = new Highschool();
+            Student collegeStudent = new College();
+            GradingService gradingService = new GradingService();
+            int choiceType;
 
-            for (int i = 0; i < student.subjectCount; i++)
+            try
             {
-                Console.Write("Please Enter Subject Number " + (i + 1) + ": ");
-                student.subjectName = Console.ReadLine();
-                student.subjectList.Add(student.subjectName);
-            }
-            Console.WriteLine();
-            for (int i = 0; i < student.subjectCount; i++)
-            {
-                Console.Write("Please Enter your grade for " + student.subjectList[i] + " Subject: ");
-                student.subjectGrade = Convert.ToSingle(Console.ReadLine());
-                student.gradeList.Add(student.subjectGrade);
-            }
+                Console.WriteLine("[1 - College] [2 - Highschool]");
+                Console.Write("Please Enter type of  Student: ");
+                choiceType = Convert.ToInt32(Console.ReadLine());
 
-           float finalGrade = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);      
-            
+                if (choiceType.Equals(1)) collegeStudent.studentLevel();
+                else if (choiceType.Equals(2)) highschoolStudent.studentLevel();
+                else Console.WriteLine("Invalid input");
+
+                Console.WriteLine();
+                Console.Write("Please Enter Your Name: ");
+                student.studentName = Console.ReadLine();
+                Console.Write("Please how many subjects you currently take: ");
+                student.subjectCount = Convert.ToInt32(Console.ReadLine());
+
+                for (int i = 0; i < student.subjectCount; i++)
+                {
+                    Console.Write("Please Enter Subject Number " + (i + 1) + ": ");
+                    student.subjectName = Console.ReadLine();
+                    student.subjectList.Add(student.subjectName);
+                }
+                Console.WriteLine();
+                for (int i = 0; i < student.subjectCount; i++)
+                {
+                    Console.Write("Please Enter your grade for " + student.subjectList[i] + " Subject: ");
+                    student.subjectGrade = Convert.ToSingle(Console.ReadLine());
+                    student.gradeList.Add(student.subjectGrade);
+                }
+
+                float finalGrade = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);
+                Console.WriteLine(finalGrade);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Input");
+            }
+          
         }
 
         
