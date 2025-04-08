@@ -6,12 +6,10 @@ namespace Csharp_Activites.Models
 {
     class Highschool : Student
     {
-
-        public override void studentLevel()
+        public override void ShowStudentLevel()
         {
             Console.WriteLine();
             Console.WriteLine("The student is in Highschool Level");
-            Console.WriteLine();
         }
     }
 }

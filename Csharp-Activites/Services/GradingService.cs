@@ -13,11 +13,15 @@ namespace Csharp_Activites.Services
             float sum = gradeList.Sum();
             return sum / subjectCount;
         }
-
-        public string DisplayResult(string studentName, string studentType )
+        public string GradingAverage(float average)
         {
-            return studentName + studentName;
-        }
+            string gradingResult;
 
+            if (average > 100) gradingResult = "Invalid Grade";
+            else if (average >= 75) gradingResult = "Passed";
+            else gradingResult = "Failed";
+
+            return gradingResult;
+        }
     }
 }

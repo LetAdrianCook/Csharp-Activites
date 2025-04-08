@@ -37,16 +37,11 @@ namespace Csharp_Activites
                             break;
                         default:
                             Console.WriteLine("Invalid choice please enter only 1, 2 and 3");
-                            Console.ReadLine();
-                            Console.Clear();
                             break;
                     }
-
                 }
                 catch { 
                     Console.WriteLine("Invalid Input");
-                    Console.ReadLine();
-                    Console.Clear();
                 }
             }
 

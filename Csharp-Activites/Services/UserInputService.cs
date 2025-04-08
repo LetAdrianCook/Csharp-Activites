@@ -21,11 +21,19 @@ namespace Csharp_Activites.Services
             try
             {
                 Console.WriteLine("[1 - College] [2 - Highschool]");
-                Console.Write("Please Enter type of  Student: ");
+                Console.Write("Please Enter Grade Level of  Student: ");
                 choiceType = Convert.ToInt32(Console.ReadLine());
 
-                if (choiceType.Equals(1)) collegeStudent.studentLevel();
-                else if (choiceType.Equals(2)) highschoolStudent.studentLevel();
+                if (choiceType.Equals(1))
+                { 
+                    collegeStudent.ShowStudentLevel();
+                    student.studentLevel = "College Level";
+                }
+                else if (choiceType.Equals(2))
+                {
+                    highschoolStudent.ShowStudentLevel();
+                    student.studentLevel = "Highschool Level";
+                }
                 else Console.WriteLine("Invalid input");
 
                 Console.WriteLine();
@@ -48,17 +56,15 @@ namespace Csharp_Activites.Services
                     student.gradeList.Add(student.subjectGrade);
                 }
 
-                float finalGrade = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);
-                Console.WriteLine(finalGrade);
+                student.finalAverage = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);
+                student.grading = gradingService.GradingAverage(student.finalAverage);
+
+                FinalStudent studentDisplay = new FinalStudent(student.studentName, student.subjectCount, student.studentLevel, student.subjectList, student.gradeList, student.finalAverage, student.grading);
             }
             catch (Exception)
             {
                 Console.WriteLine("Invalid Input");
-            }
-          
+            }         
         }
-
-        
-
     }
 }
