@@ -27,28 +27,27 @@ namespace Csharp_Activites.Models
 
             DisplayStudentResult(studentName, subjectCount, studentLevel, subjectList, gradeList, average, grading);
         }
-
         void DisplayStudentResult(string studentName,int subjectCount, string studentLevel, List<string> subjectList, List<float> gradeList, float average, string grading)
         {
             Console.WriteLine();
-            Console.WriteLine("--------------------Grading-System--------------------");
-            Console.WriteLine();
-            Console.WriteLine("Name         : " + studentName);
-            Console.WriteLine("Grade Level  : " + studentLevel);
-            Console.WriteLine();
-            Console.WriteLine("-----------------------Subjects-----------------------");
-            Console.WriteLine();
+            Console.WriteLine("|--------------------Grading-System--------------------|");
+            Console.WriteLine("|");
+            Console.WriteLine("| Name         : " + studentName);
+            Console.WriteLine("| Grade Level  : " + studentLevel);
+            Console.WriteLine("|");
+            Console.WriteLine("|-----------------------Subjects-----------------------|");
+            Console.WriteLine("|");
             for (int i = 0; i < subjectCount; i++)
             {
-                Console.WriteLine(subjectList[i] + " : " + gradeList[i]);
+                Console.WriteLine("|" + subjectList[i] + " : " + gradeList[i]);
             }
-            Console.WriteLine();
-            Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine();
-            Console.WriteLine("Your Final Average is : " + average);
-            Console.WriteLine("Grading               : " + grading);
-            Console.WriteLine();
-            Console.WriteLine("------------------------------------------------------");
+            Console.WriteLine("|");
+            Console.WriteLine("|------------------------------------------------------|");
+            Console.WriteLine("|");
+            Console.WriteLine("| Your Final Average is : " + average);
+            Console.WriteLine("| Grading               : " + grading);
+            Console.WriteLine("|");
+            Console.WriteLine("|------------------------------------------------------|");
             Console.WriteLine();
         }
     }

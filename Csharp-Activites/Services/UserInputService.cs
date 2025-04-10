@@ -46,27 +46,35 @@ namespace Csharp_Activites.Services
                 Console.Write("Please how many subjects you currently take: ");
                 student.subjectCount = Convert.ToInt32(Console.ReadLine());
 
-                for (int i = 0; i < student.subjectCount; i++)
+                if (student.subjectCount > 0)
                 {
-                    Console.Write("Please Enter Subject Number " + (i + 1) + ": ");
-                    student.subjectName = Console.ReadLine();
-                    student.subjectList.Add(student.subjectName);
-                }
-                Console.WriteLine();
-                for (int i = 0; i < student.subjectCount; i++)
+                    for (int i = 0; i < student.subjectCount; i++)
+                    {
+                        Console.Write("Please Enter Subject Number " + (i + 1) + ": ");
+                        student.subjectName = Console.ReadLine();
+                        student.subjectList.Add(student.subjectName);
+                    }
+                    Console.WriteLine();
+                    for (int i = 0; i < student.subjectCount; i++)
+                    {
+                        Console.Write("Please Enter your grade for " + student.subjectList[i] + " Subject: ");
+                        student.subjectGrade = Convert.ToSingle(Console.ReadLine());
+                        student.gradeList.Add(student.subjectGrade);
+                    }
+
+                    student.finalAverage = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);
+                    student.grading = gradingService.GradingAverage(student.finalAverage);
+
+                    FinalStudent studentDisplay = new FinalStudent(student.studentName, student.subjectCount,
+                                                                   student.studentLevel, student.subjectList,
+                                                                   student.gradeList, student.finalAverage,
+                                                                   student.grading);
+
+                } else
                 {
-                    Console.Write("Please Enter your grade for " + student.subjectList[i] + " Subject: ");
-                    student.subjectGrade = Convert.ToSingle(Console.ReadLine());
-                    student.gradeList.Add(student.subjectGrade);
-                }
-
-                student.finalAverage = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);
-                student.grading = gradingService.GradingAverage(student.finalAverage);
-
-                FinalStudent studentDisplay = new FinalStudent(student.studentName, student.subjectCount, 
-                                                               student.studentLevel, student.subjectList, 
-                                                               student.gradeList, student.finalAverage, 
-                                                               student.grading);
+                    Console.WriteLine("Number of subject must be 1 or above");
+                    return;
+                }            
             }
             catch (Exception)
             {
