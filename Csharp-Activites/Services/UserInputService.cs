@@ -74,7 +74,6 @@ namespace Csharp_Activites.Services
                                                                    student.studentLevel, student.subjectList,
                                                                    student.gradeList, student.finalAverage,
                                                                    student.grading);
-
                 } else
                 {
                     Console.WriteLine("Number of subject must be 1 or above");
