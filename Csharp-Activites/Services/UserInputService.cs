@@ -62,7 +62,12 @@ namespace Csharp_Activites.Services
                         student.gradeList.Add(student.subjectGrade);
                     }
 
-                    student.finalAverage = gradingService.CalculateFinalGrade(student.gradeList, student.subjectCount);
+                    Calculation gradeSum = new CalculateSum(student.gradeList); //dili pwede i pass directly ang gradesum sa calculate finalaverage kay entire calculate object siya
+                    float convertSum = gradeSum.CalculateStudentGrade();
+
+                    Calculation finalAverage = new CalculateFinalAverage(convertSum, student.subjectCount);
+                    student.finalAverage = finalAverage.CalculateStudentGrade();
+
                     student.grading = gradingService.GradingAverage(student.finalAverage);
 
                     FinalStudent studentDisplay = new FinalStudent(student.studentName, student.subjectCount,
